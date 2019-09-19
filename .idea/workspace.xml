@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a2dc5d55-ab98-42e0-9323-0240350bd373" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="a2dc5d55-ab98-42e0-9323-0240350bd373" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -104,11 +102,14 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="869" />
+    <option name="x" value="34" />
+    <option name="y" value="35" />
     <option name="width" value="1510" />
     <option name="height" value="1062" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -193,7 +194,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="869" y="0" width="1510" height="1062" extended-state="0" />
+    <frame x="9" y="23" width="1510" height="1062" extended-state="0" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />
