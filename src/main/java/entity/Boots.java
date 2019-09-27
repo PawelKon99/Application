@@ -2,11 +2,11 @@ package entity;
 
 public class Boots extends Product {
 
-    private int size;
+    private Integer size;
     private  boolean isNaturalSkin;
 
-    public Boots(String colour, String productName, int id, int price, int weight, int productCount, int size, boolean isNaturalSkin) {
-        super(colour, productName, id, price, weight, productCount);
+    public Boots(Long id, String productName, Float price, Float weight, String color, Integer productCount, Integer size, boolean isNaturalSkin) {
+        super(id, productName, price, weight, color, productCount);
         this.size = size;
         this.isNaturalSkin = isNaturalSkin;
     }

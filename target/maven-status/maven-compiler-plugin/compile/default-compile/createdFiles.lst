@@ -1,0 +1,8 @@
+entity\User.class
+service\ProductServiceImpl.class
+entity\Product.class
+api\ProductService.class
+entity\Clothes.class
+api\UserService.class
+entity\Boots.class
+service\UserServiceImpl.class

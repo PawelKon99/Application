@@ -2,15 +2,15 @@ package entity;
 
 public class Product {
 
-    private  String colour;
+    private String color;
     private String productName;
-    private int id;
-    private  int price;
-    private  int weight;
-    private  int productCount;
+    private Long id;
+    private float price;
+    private float weight;
+    private Integer productCount;
 
-    public Product(String colour, String productName, int id, int price, int weight, int productCount){
-        this.colour = colour;
+    public Product(Long id, String productName, Float price, Float weight, String color, Integer productCount){
+        this.color = color;
         this.productCount = productCount;
         this.id = id;
         this.productName = productName;
@@ -19,31 +19,32 @@ public class Product {
         this.productCount = productCount;
     }
 
-    public String toString(){
-        return "Product{" + "kolor: " + colour + "Nazwa produktu: " + productName + "id produktu: " + id + "cena: " + price + "waga: " + weight+"ilosc produktów: " + productCount + "}" ;
+    @Override
+    public String toString() {
+        return id + PRODUCT_SEPARATOR + productName + PRODUCT_SEPARATOR + price + PRODUCT_SEPARATOR + weight + PRODUCT_SEPARATOR + color + PRODUCT_SEPARATOR + productCount;
     }
 
     public String getColour() {
-        return colour;
+        return color;
     }
 
     public String getProductName() {
         return productName;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public int getWeight() {
+    public float getWeight() {
         return weight;
     }
 
-    public int getProductCount() {
+    public Integer getProductCount() {
         return productCount;
     }
 
@@ -54,4 +55,8 @@ public class Product {
     public void setProductCount(int productCount) {
         this.productCount = productCount;
     }
+
+    public final static String PRODUCT_SEPARATOR = "#";
+
+
 }

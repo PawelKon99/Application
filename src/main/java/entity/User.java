@@ -27,4 +27,6 @@ public class User {
     public String getPassword() {
         return password;
     }
+
+    public final static String USER_SEPARATOR = "#";
 }
