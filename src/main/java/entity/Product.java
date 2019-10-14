@@ -1,15 +1,20 @@
 package entity;
 
+import entity.enums.Color;
+import entity.enums.ProductSeparators;
+
 public class Product {
 
-    private String color;
+
+
+    private Color color;
     private String productName;
     private Long id;
     private float price;
     private float weight;
     private Integer productCount;
 
-    public Product(Long id, String productName, Float price, Float weight, String color, Integer productCount){
+    public Product(Long id, String productName, Float price, Float weight, Color color, Integer productCount){
         this.color = color;
         this.productCount = productCount;
         this.id = id;
@@ -19,12 +24,21 @@ public class Product {
         this.productCount = productCount;
     }
 
-    @Override
-    public String toString() {
-        return id + PRODUCT_SEPARATOR + productName + PRODUCT_SEPARATOR + price + PRODUCT_SEPARATOR + weight + PRODUCT_SEPARATOR + color + PRODUCT_SEPARATOR + productCount;
+    public Product(Long id, String productName, Float price, Float weight, Integer productCount) {
+
     }
 
-    public String getColour() {
+    protected String getBasicProductString() {
+        return id + ProductSeparators.PRODUCT_SEPARATOR.toString() + productName + ProductSeparators.PRODUCT_SEPARATOR.toString() + price + ProductSeparators.PRODUCT_SEPARATOR.toString() + weight + ProductSeparators.PRODUCT_SEPARATOR.toString() + color + ProductSeparators.PRODUCT_SEPARATOR.toString() + productCount;
+    }
+
+    @Override
+    public String toString() {
+        return ProductSeparators.PRODUCT_ID + ProductSeparators.PRODUCT_SEPARATOR.toString() + getBasicProductString();
+    }
+
+
+    public Color getColor() {
         return color;
     }
 
@@ -56,7 +70,7 @@ public class Product {
         this.productCount = productCount;
     }
 
-    public final static String PRODUCT_SEPARATOR = "#";
+
 
 
 }

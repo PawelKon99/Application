@@ -11,13 +11,22 @@ import java.util.List;
 
 public class ProductDaoImpl implements ProductDao {
 
-    private final String fileName;
-    private final String productType;
+    private static final String fileName = "products.data";
+    private static ProductDao instance = null;
 
-    public ProductDaoImpl(String fileName, String productType) throws IOException {
-        this.fileName = fileName;
-        this.productType = productType;
-        FileUtils.createNewFile(fileName);
+    public static ProductDao getInstance(){
+        if (instance==null){
+            instance = new ProductDaoImpl();
+        }
+        return instance;
+    }
+
+    private ProductDaoImpl(){
+        try {
+            FileUtils.createNewFile(fileName);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void saveProduct(Product product) throws IOException {
@@ -35,11 +44,11 @@ public class ProductDaoImpl implements ProductDao {
         printWriter.close();
     }
 
-    public void removeProductById(long prductId) throws IOException {
+    public void removeProductById(Long productId) throws IOException {
         List<Product> products = getAllProducts();
 
         for (int i = 0; i < products.size(); i++) {
-            boolean isFoundProduct = products.get(i).getId().equals(prductId);
+            boolean isFoundProduct = products.get(i).getId().equals(productId);
             if (isFoundProduct) {
                 products.remove(i);
             }
@@ -64,7 +73,7 @@ public class ProductDaoImpl implements ProductDao {
 
         String readLine = bufferedReader.readLine();
         while(readLine != null) {
-            Product product = ProductParser.stringToProduct(readLine, productType);
+            Product product = ProductParser.stringToProduct(readLine);
             if (product != null) {
                 products.add(product);
             }
@@ -76,29 +85,6 @@ public class ProductDaoImpl implements ProductDao {
         return products;
     }
 
-    public Product getProductById(long productId)throws IOException{
-        List<Product> products = getAllProducts();
-
-        for (Product product : products){
-            boolean isFoundProduct = product.getId().equals(productId);
-            if (isFoundProduct){
-                return product;
-            }
-        }
-        return null;
-    }
-
-    public Product getProductByProductName(String productName)throws IOException{
-        List<Product> products = getAllProducts();
-
-        for (Product product : products){
-            boolean isFoundProduct = product.getProductName().equals(productName);
-            if (isFoundProduct){
-                return product;
-            }
-        }
-        return null;
-    }
 }
 
 

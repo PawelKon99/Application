@@ -11,11 +11,23 @@ import java.util.List;
 
 public class UserDaoImpl implements UserDao {
 
-    private final String fileName;
+    private static final String fileName = "users.data";
+    private static UserDaoImpl instance = null;
 
-    public UserDaoImpl(String fileName)throws IOException{
-        this.fileName = fileName;
-        FileUtils.createNewFile(fileName);
+    private UserDaoImpl(){
+        try {
+            FileUtils.createNewFile(fileName);
+        }catch (IOException e){
+            System.out.println("Error with file path");
+            System.exit(-1);
+        }
+    }
+
+    public static UserDaoImpl getInstance(){
+        if (instance == null){
+            instance = new UserDaoImpl();
+        }
+        return instance;
     }
 
     public void saveUser(User user)throws IOException {
@@ -31,17 +43,6 @@ public class UserDaoImpl implements UserDao {
             printWriter.write(user.toString() + "\n");
         }
         printWriter.close();
-    }
-
-    public void removeUserById(long productId)throws IOException{
-        List<User> users = getAllUsers();
-        for (int i = 0;i<users.size();i++){
-            boolean isFoundUser = users.get(i).getId().equals(productId);
-            if (isFoundUser){
-                users.remove(i);
-            }
-        }
-        saveUsers(users);
     }
 
     public void removeUserByLogin(String login)throws IOException{
@@ -86,27 +87,4 @@ public class UserDaoImpl implements UserDao {
         return users;
     }
 
-    public User getUserByLogin(String login)throws IOException{
-        List<User> users = getAllUsers();
-
-        for (User user : users){
-            boolean isFoundUser = user.getLogin().equals(login);
-            if (isFoundUser){
-                return user;
-            }
-        }
-        return null;
-    }
-
-    public User getUserById(Long userId)throws IOException{
-        List<User> users = getAllUsers();
-
-        for(User user : users){
-            boolean isFoundUser = user.getId().equals(userId);
-            if (isFoundUser){
-                return user;
-            }
-        }
-        return null;
-    }
 }

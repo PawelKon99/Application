@@ -1,25 +1,32 @@
 package entity;
 
+import entity.enums.Color;
+import entity.enums.Material;
+import entity.enums.ProductSeparators;
+
 public class Clothes extends Product {
 
-    private String size;
-    private String material;
 
-    public Clothes(Long id, String productName, Float price, Float weight, String color, Integer productCount, String size, String material) {
+
+    private String size;
+    private Material material;
+
+    public Clothes(Long id, String productName, Float price, Float weight, Color color, Integer productCount, String size, Material material) {
         super(id, productName, price, weight, color, productCount);
         this.size = size;
         this.material = material;
     }
 
-    public String toString(){
-        return super.toString() + "Ubranie{" + "rozmiar: " + size + "materiał: " + material + "}";
+    @Override
+    public String toString() {
+        return ProductSeparators.CLOTH_ID + ProductSeparators.PRODUCT_SEPARATOR.toString() + getBasicProductString() + ProductSeparators.PRODUCT_SEPARATOR.toString() + size + ProductSeparators.PRODUCT_SEPARATOR.toString() + material;
     }
 
     public String getSize() {
         return size;
     }
 
-    public String getMaterial() {
+    public Material getMaterial() {
         return material;
     }
 }

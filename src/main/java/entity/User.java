@@ -11,8 +11,9 @@ public class User {
         this.login = login;
         this.password = password;
     }
-    public String toString(){
-        return "User{" + "login: " + login +"password: "+password + "}";
+    @Override
+    public String toString() {
+        return id + USER_SEPARATOR + login + USER_SEPARATOR + password;
     }
 
 
